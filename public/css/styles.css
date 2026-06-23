@@ -233,3 +233,28 @@ button {
 .btn-agregar:hover {
     background: #6d28d9;
 }
+
+.tarjeta-acciones {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-editar {
+    background: transparent;
+    border: 1px solid #2e1f6e;
+    color: #7c6faa;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.btn-editar:hover {
+    border-color: #7c3aed;
+    color: #a78bfa;
+}
+
+.tarjeta-editar input {
+    margin-bottom: 8px;
+}

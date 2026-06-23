@@ -95,6 +95,38 @@ app.post('/api/registro', (req, res) => {
     });
 });
 
+
+// Eliminar contraseña
+app.delete('/api/contrasenas/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.query('DELETE FROM contrasenas WHERE id = ?', [id], (error) => {
+        if (error) {
+            return res.json({ exito: false, mensaje: 'Error al eliminar' });
+        }
+        res.json({ exito: true, mensaje: 'Contraseña eliminada' });
+    });
+});
+
+// Editar contraseña
+app.put('/api/contrasenas/:id', (req, res) => {
+    const { id } = req.params;
+    const { app, usuario_app, contrasena } = req.body;
+
+    const contrasenaCifrada = CryptoJS.AES.encrypt(contrasena, CLAVE).toString();
+
+    db.query(
+        'UPDATE contrasenas SET app = ?, usuario_app = ?, contrasena = ? WHERE id = ?',
+        [app, usuario_app, contrasenaCifrada, id],
+        (error) => {
+            if (error) {
+                return res.json({ exito: false, mensaje: 'Error al editar' });
+            }
+            res.json({ exito: true, mensaje: 'Contraseña actualizada' });
+        }
+    );
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

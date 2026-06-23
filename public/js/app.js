@@ -76,13 +76,28 @@ function cargarContrasenas() {
 
         resp.contrasenas.forEach(item => {
             lista.innerHTML += `
-                <div class="tarjeta-clave">
-                    <h3>${item.app}</h3>
-                    <p>Usuario: ${item.usuario_app}</p>
-                    <p>Contraseña: 
-                        <span id="clave-${item.id}">••••••</span>
-                        <button class="btn-ver" onclick="verClave('${item.id}', '${item.contrasena}')">Ver</button>
-                    </p>
+                <div class="tarjeta-clave" id="tarjeta-${item.id}">
+                    <div class="tarjeta-vista">
+                        <h3>${item.app}</h3>
+                        <p>Usuario: ${item.usuario_app}</p>
+                        <p>Contraseña: 
+                            <span id="clave-${item.id}">••••••</span>
+                            <button class="btn-ver" onclick="verClave('${item.id}', '${item.contrasena}')">Ver</button>
+                        </p>
+                        <div class="tarjeta-acciones">
+                            <button class="btn-editar" onclick="mostrarEditar(${item.id}, '${item.app}', '${item.usuario_app}', '${item.contrasena}')">Editar</button>
+                            <button class="btn-eliminar" onclick="eliminarClave(${item.id})">Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="tarjeta-editar" id="editar-${item.id}" style="display:none;">
+                        <input type="text" id="edit-app-${item.id}" placeholder="App">
+                        <input type="text" id="edit-usuario-${item.id}" placeholder="Usuario">
+                        <input type="password" id="edit-clave-${item.id}" placeholder="Nueva contraseña">
+                        <div class="tarjeta-acciones">
+                            <button class="btn-principal" onclick="guardarEdicion(${item.id})">Guardar</button>
+                            <button class="btn-eliminar" onclick="cancelarEditar(${item.id})">Cancelar</button>
+                        </div>
+                    </div>
                 </div>
             `;
         });
@@ -97,6 +112,57 @@ function verClave(id, contrasena) {
     } else {
         span.textContent = '••••••';
     }
+}
+
+// Mostrar formulario editar
+function mostrarEditar(id, app, usuario, contrasena) {
+    document.getElementById('editar-' + id).style.display = 'block';
+    document.getElementById('edit-app-' + id).value = app;
+    document.getElementById('edit-usuario-' + id).value = usuario;
+    document.getElementById('edit-clave-' + id).value = contrasena;
+}
+
+// Cancelar editar
+function cancelarEditar(id) {
+    document.getElementById('editar-' + id).style.display = 'none';
+}
+
+// Guardar edición
+function guardarEdicion(id) {
+    const app = document.getElementById('edit-app-' + id).value;
+    const usuario_app = document.getElementById('edit-usuario-' + id).value;
+    const contrasena = document.getElementById('edit-clave-' + id).value;
+
+    fetch('/api/contrasenas/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ app, usuario_app, contrasena })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.exito) {
+            cargarContrasenas();
+        } else {
+            alert(data.mensaje);
+        }
+    });
+}
+
+// Eliminar contraseña
+function eliminarClave(id) {
+    if (!confirm('¿Seguro que quieres eliminar esta contraseña?')) return;
+
+    fetch('/api/contrasenas/' + id, {
+        method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.exito) {
+            cargarContrasenas();
+        } else {
+            alert(data.mensaje);
+        }
+    });
 }
 
 // Agregar contraseña
