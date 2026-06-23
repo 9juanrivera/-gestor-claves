@@ -258,3 +258,19 @@ button {
 .tarjeta-editar input {
     margin-bottom: 8px;
 }
+
+.btn-eliminar {
+    background: transparent;
+    border: 1px solid #4a1a1a;
+    color: #a05050;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover {
+    border-color: #c0392b;
+    color: #e74c3c;
+}
