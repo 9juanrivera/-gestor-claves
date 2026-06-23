@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Claves</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Sección Login -->
+    <div id="seccion-login">
+        <div class="contenedor">
+            <h1>Gestor de Claves</h1>
+            <p class="subtitulo">Ingresa con tu código maestro</p>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <input type="password" id="codigo" placeholder="Código maestro" required>
+            <button id="btn-entrar" class="btn-principal">Entrar</button>
+            <p class="link-nav">¿No tienes cuenta? <a href="#" id="ir-registro">Regístrate</a></p>
+        </div>
+    </div>
+
+    <!-- Sección Registro -->
+    <div id="seccion-registro" style="display:none;">
+        <div class="contenedor">
+            <h1>Crear cuenta</h1>
+            <p class="subtitulo">Elige un nombre y un código maestro</p>
+            <input type="text" id="reg-nombre" placeholder="Tu nombre" required>
+            <input type="password" id="reg-codigo" placeholder="Código maestro" required>
+            <button id="btn-registrar" class="btn-principal">Registrarse</button>
+            <p class="link-nav">¿Ya tienes cuenta? <a href="#" id="ir-login">Inicia sesión</a></p>
+        </div>
+    </div>
+
+    <!-- Sección Panel -->
+    <div id="seccion-panel" style="display:none;">
+        <div class="contenedor">
+            <div class="panel-header">
+                <h1>Tus claves</h1>
+                <button id="btn-salir" class="btn-salir">Cerrar sesión</button>
+            </div>
+
+            <div id="lista-claves"></div>
+
+            <div class="form-agregar">
+                <h2>Agregar contraseña</h2>
+                <input type="text" id="nueva-app" placeholder="App (ej: Instagram)">
+                <input type="text" id="nuevo-usuario" placeholder="Usuario">
+                <input type="password" id="nueva-clave" placeholder="Contraseña">
+                <button id="btn-agregar" class="btn-agregar">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

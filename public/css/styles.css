@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d0a1a;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(ellipse at 20% 50%, #1a0d3b 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 20%, #12063a 0%, transparent 50%);
+}
+
+/* --- Contenedor principal --- */
+.contenedor {
+    background: #13102a;
+    border: 1px solid #2e1f6e;
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 60px rgba(100, 60, 220, 0.15);
+}
+
+/* --- Títulos --- */
+h1 {
+    color: #c4b5fd;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #a78bfa;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #2e1f6e;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #6b5fa6;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Inputs --- */
+input {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background: #0d0a1a;
+    border: 1px solid #2e1f6e;
+    border-radius: 10px;
+    color: #e2d9f3;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+input::placeholder {
+    color: #4a3d7a;
+}
+
+input:focus {
+    border-color: #7c3aed;
+}
+
+/* --- Botones principales --- */
+button {
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+}
+
+.btn-principal {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #6d28d9;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.btn-principal:hover {
+    background: #7c3aed;
+}
+
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* --- Link de navegación --- */
+.link-nav {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #6b5fa6;
+}
+
+.link-nav a {
+    color: #a78bfa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-nav a:hover {
+    color: #c4b5fd;
+}
+
+/* --- Panel --- */
+#seccion-panel .contenedor {
+    max-width: 560px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header h1 {
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.btn-salir {
+    background: transparent;
+    border: 1px solid #2e1f6e;
+    color: #6b5fa6;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.btn-salir:hover {
+    border-color: #7c3aed;
+    color: #a78bfa;
+}
+
+/* --- Tarjetas de contraseñas --- */
+#lista-claves {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta-clave {
+    background: #ffffff08;
+    border: 1px solid #2e1f6e;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    transition: border-color 0.2s;
+}
+
+.tarjeta-clave:hover {
+    border-color: #5b21b6;
+}
+
+.tarjeta-clave h3 {
+    color: #c4b5fd;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.tarjeta-clave p {
+    color: #7c6faa;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.tarjeta-clave p span {
+    color: #a78bfa;
+    font-weight: 500;
+}
+
+.btn-ver {
+    background: transparent;
+    border: 1px solid #3b2d7a;
+    color: #7c6faa;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-left: 8px;
+}
+
+.btn-ver:hover {
+    border-color: #7c3aed;
+    color: #a78bfa;
+}
+
+/* --- Formulario agregar --- */
+.form-agregar {
+    background: #0d0a1a;
+    border: 1px solid #2e1f6e;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+}
+
+.btn-agregar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #4c1d95;
+    color: #e2d9f3;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.btn-agregar:hover {
+    background: #6d28d9;
+}
